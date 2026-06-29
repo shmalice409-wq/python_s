@@ -10,3 +10,7 @@ for i in range(0, num_examples, 4):
         indices[i: min(i + 4, num_examples)])
     print(batch_indices)
     print(features[batch_indices])
+
+from tools import Accumulator
+metric = Accumulator(2)
+print(metric)
