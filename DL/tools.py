@@ -106,3 +106,28 @@ def train_ch3(net, train_iter, test_iter, loss, num_epochs, updater):  #@save
         train_metrics = train_epoch_ch3(net, train_iter, loss, updater)
         test_acc = evaluate_accuracy(net, test_iter)
         animator.add(epoch + 1, train_metrics + (test_acc,))
+
+from torchvision import transforms
+import torchvision
+from torch.utils import data
+def load_data_fashion_mnist(batch_size, resize=None):
+    """Download the Fashion-MNIST dataset and then load into memory."""
+    trans=transforms.ToTensor()
+    if resize:
+        trans.insert(0,transforms.Resize(resize))
+    
+    mnist_train=torchvision.datasets.FashionMNIST(root='data',train=True,transform=trans,download=True)
+    mnist_test=torchvision.datasets.FashionMNIST(root='data',train=False,transform=trans,download=True)
+    train_iter=data.DataLoader(mnist_train,batch_size,shuffle=True,num_workers=4)
+    test_iter=data.DataLoader(mnist_test,batch_size,shuffle=False,num_workers=4)
+    return (train_iter,test_iter)
+
+def predict_ch3(net, test_iter, n=6):  #@save
+    """预测标签（定义见第3章）"""
+    for X, y in test_iter:
+        break
+    trues = d2l.get_fashion_mnist_labels(y)
+    preds = d2l.get_fashion_mnist_labels(net(X).argmax(axis=1))
+    titles = [true +'\n' + pred for true, pred in zip(trues, preds)]
+    d2l.show_images(
+        X[0:n].reshape((n, 28, 28)), 1, n, titles=titles[0:n])
