@@ -1,32 +1,34 @@
 import pandas as pd
 
-series=pd.Series([1,2,3,4,5],name="A")
+series = pd.Series([1, 2, 3, 4, 5], name="A")
 
-#print(series)
+# print(series)
 
 # 自定义设置索引
 
-custom_index=['a','b','c','d','e']
-series=pd.Series([1,2,3,4,5],name="A",index=custom_index)
-#print(series)
+custom_index = ["a", "b", "c", "d", "e"]
+series = pd.Series([1, 2, 3, 4, 5], name="A", index=custom_index)
+# print(series)
 
-#print(series['a'])  # 通过索引获取值
+# print(series['a'])  # 通过索引获取值
 
-dict_data={'a':1,'b':2,'c':3,'d':4,'e':5}
-series=pd.Series(dict_data,name="A")
-#print(series)
+dict_data = {"a": 1, "b": 2, "c": 3, "d": 4, "e": 5}
+series = pd.Series(dict_data, name="A")
+# print(series)
 
 
 data = [1, 2, 3, 4, 5, 6]
-index = ['a', 'b', 'c', 'd', 'e', 'f']
+index = ["a", "b", "c", "d", "e", "f"]
 s = pd.Series(data, index=index)
 
-print(F"索引: {s.index}")
-print(F"数据: {s.values}")
-print(F"数据类型: {s.dtype}")
+
+print(f"索引: {s.index}")
+
+print(f"数据: {s.values}")
+print(f"数据类型: {s.dtype}")
 print(f"前两行数据：{s.head(2)}")
 
-s_doubled=s.map(lambda x: x*2)
+s_doubled = s.map(lambda x: x * 2)
 print(f"数据翻倍: {s_doubled}")
 
 cumsum_series = s.cumsum()
