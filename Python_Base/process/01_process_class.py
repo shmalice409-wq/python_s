@@ -8,6 +8,8 @@ class MyProcess(multiprocessing.Process):
         self.delay=delayed
     
     def run(self):
+        """进程核心逻辑，start()会调用该函数
+        """
         print(f"自定义进程{self.name},启动PID：{self.pid}")
         time.sleep(self.delay)
         print(f"自定义进程{self.name}执行完毕")
