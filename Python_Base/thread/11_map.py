@@ -1,5 +1,6 @@
+import time
 from concurrent.futures import ThreadPoolExecutor
-import time 
+
 
 def calc(x):
     time.sleep(1)
